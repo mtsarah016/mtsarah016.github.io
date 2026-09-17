@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah Taylor Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 15% 10%, #ddf0e8 0%, transparent 40%),
+                        radial-gradient(circle at 85% 90%, #d8ecec 0%, transparent 40%),
+                        #eaf6f6;
+            color: #2e4d3f;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            color: #3a7d5c;
+            font-size: 2.4em;
+            margin-bottom: 8px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background-color: #4caf7d;
+            border-radius: 2px;
+            margin: 20px auto 40px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            padding-left: 30px;
+            text-align: left;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 3px;
+            background-color: #a9d8bf;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 4px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: #4caf7d;
+            border: 3px solid #eaf6f6;
+            box-shadow: 0 0 0 2px #4caf7d;
+        }
+
+        .timeline-item.current::before {
+            background-color: #3a7d5c;
+            box-shadow: 0 0 0 2px #3a7d5c, 0 0 10px rgba(76, 175, 125, 0.6);
+        }
+
+        .timeline-date {
+            font-size: 0.85em;
+            font-weight: 700;
+            color: #4caf7d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-role {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #2e4d3f;
+            margin-bottom: 2px;
+        }
+
+        .timeline-org {
+            font-size: 0.95em;
+            color: #5c8a76;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            line-height: 1.6;
+            color: #2e4d3f;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #3a7d5c;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My Experience Timeline</h1>
+    <div class="divider"></div>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-date">Oct 2025 &ndash; May 2026</div>
+            <div class="timeline-role">Research Technician Intern</div>
+            <div class="timeline-org">Memphis Zoo &middot; Memphis, TN</div>
+            <div class="timeline-desc">
+                Supported conservation research on endangered Louisiana pinesnakes and dusky gopher frogs,
+                including daily animal care and assisting with health assessments.
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">Jan 2026 &ndash; May 2026</div>
+            <div class="timeline-role">GIS Intern</div>
+            <div class="timeline-org">Town of Atoka &middot; Atoka, TN</div>
+            <div class="timeline-desc">
+                Collected and managed geographic data using GPS and GIS tools, and produced maps in ArcGIS
+                for municipal departments and elected officials.
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">June 2026</div>
+            <div class="timeline-role">Assistant to Ship Naturalist</div>
+            <div class="timeline-org">Royal Caribbean &middot; Alaska</div>
+            <div class="timeline-desc">
+                Researched and delivered a passenger presentation on seals and sea lions during Alaskan
+                cruises, translating ecological science into accessible content.
+            </div>
+        </div>
+        <div class="timeline-item current">
+            <div class="timeline-date">Aug 2026 &ndash; Present</div>
+            <div class="timeline-role">Research Technician, Yuan Lab</div>
+            <div class="timeline-org">Herbert Wertheim UF Scripps Institute for Biomedical Innovation &amp; Technology</div>
+            <div class="timeline-desc">
+                Support biomedical research operations, including fluorescence microscopy, cell culture
+                maintenance, and mentoring students in the lab.
+            </div>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-link">&larr; Back to home</a>
+
+</body>
+</html>

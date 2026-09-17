@@ -1,1 +1,123 @@
-<h1> My Portfolio <h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah Taylor Portfolio</title>
+    <style>
+        body {
+            background-color: #eaf6f6; /* soft light blue */
+            color: #2e4d3f; /* deep forest green text */
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            color: #3a7d5c; /* leafy green */
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            background-color: #4caf7d; /* pretty green */
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(76, 175, 125, 0.4);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #3a8f66;
+            transform: scale(1.05);
+        }
+
+        .about-me {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 280px;
+            text-align: left;
+            order: 2;
+        }
+
+        .about-text h2 {
+            color: #3a7d5c;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .about-photo {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            justify-content: center;
+            order: 1;
+        }
+
+        .about-photo img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(58, 125, 92, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Sarah Taylor Portfolio</h1>
+
+    <section class="about-me">
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>
+                In May 2026, I graduated from Rhodes College with my Bachelors of Science in
+                Computer Science and Environmental Science. I currently work as a Research Technician/
+                Lab Manager for Herbert Wertheim UF Scripps Institute for Biomedical Innovation and
+                Technology.
+            </p>
+            <p>
+                My next step is to go to grad school and work closely with a PI in their lab.
+            </p>
+        </div>
+        <div class="about-photo">
+            <img src="sarah.jpg" alt="Sarah Taylor">
+        </div>
+    </section>
+
+    <a href="Sarah_Taylor_CV.pdf" download>
+        <button>Download My CV</button>
+    </a>
+
+    <br><br>
+
+    <a href="professors.html">
+        <button>Click here if you are a professor with openings in your lab</button>
+    </a>
+
+    <br><br>
+
+</body>
+</html>

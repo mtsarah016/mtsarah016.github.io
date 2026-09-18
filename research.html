@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah Taylor Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 15% 10%, #ddf0e8 0%, transparent 40%),
+                        radial-gradient(circle at 85% 90%, #d8ecec 0%, transparent 40%),
+                        #eaf6f6;
+            color: #2e4d3f;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            color: #3a7d5c;
+            font-size: 2.4em;
+            margin-bottom: 8px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background-color: #4caf7d;
+            border-radius: 2px;
+            margin: 20px auto 50px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .section-heading {
+            color: #3a7d5c;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .projects {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.55);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(58, 125, 92, 0.15);
+            padding: 30px;
+            text-align: left;
+        }
+
+        .project-title {
+            font-size: 1.25em;
+            font-weight: 700;
+            color: #2e4d3f;
+            margin-bottom: 4px;
+        }
+
+        .project-subtitle {
+            font-size: 0.95em;
+            color: #5c8a76;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .project-card ul {
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.7;
+        }
+
+        .project-card li {
+            margin-bottom: 8px;
+        }
+
+        .skills-section {
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+
+        .skill-category {
+            background-color: rgba(255, 255, 255, 0.55);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 6px 18px rgba(58, 125, 92, 0.12);
+        }
+
+        .skill-category h3 {
+            color: #3a7d5c;
+            font-size: 1.05em;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background-color: #4caf7d;
+            color: white;
+            font-size: 0.85em;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #3a7d5c;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Research &amp; Skills</h1>
+    <div class="divider"></div>
+
+    <h2 class="section-heading">Research Projects</h2>
+    <div class="projects">
+        <div class="project-card">
+            <div class="project-title">Adaptive Resource Allocation Under Climate Change</div>
+            <div class="project-subtitle">Using Computational Modeling with Malaria Vaccination Coverage as a Case Study</div>
+            <ul>
+                <li>Investigated computational approaches to malaria vaccination resource allocation under changing climate conditions.</li>
+                <li>Integrated environmental and epidemiological datasets using Python, GIS, and computational modeling.</li>
+                <li>Applied spatial and computational approaches to examine relationships among climate conditions, disease risk, and vaccination coverage.</li>
+                <li>Explored resource-allocation strategies under projected environmental conditions.</li>
+            </ul>
+        </div>
+
+        <div class="project-card">
+            <div class="project-title">Agent-Based Modeling Applied to Weevil Predation</div>
+            <div class="project-subtitle">Computational Ecological Modeling &middot; Endangered Tillandsia utriculata Species</div>
+            <ul>
+                <li>Developed agent-based models using NetLogo to investigate ecological interactions involving weevil predation.</li>
+                <li>Used computational simulation to examine population-level ecological outcomes.</li>
+                <li>Applied concepts from ecology, environmental science, and computer science to model an endangered species system.</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2 class="section-heading">Skills</h2>
+    <div class="skills-section">
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Programming</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">C</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">NetLogo</span>
+                    <span class="skill-tag">Git/GitHub</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Computational &amp; Data</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Computational Modeling</span>
+                    <span class="skill-tag">Agent-Based Modeling</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Spatial Analysis</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>GIS</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">ArcGIS</span>
+                    <span class="skill-tag">ArcGIS Online</span>
+                    <span class="skill-tag">GPS Data Collection</span>
+                    <span class="skill-tag">Spatial Data Management</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Laboratory</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Specimen Collection</span>
+                    <span class="skill-tag">Microscopy</span>
+                    <span class="skill-tag">Fluorescence Microscopy</span>
+                    <span class="skill-tag">Digital Imaging</span>
+                    <span class="skill-tag">Centrifugation</span>
+                    <span class="skill-tag">Cell Culture</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Research</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Scientific Documentation</span>
+                    <span class="skill-tag">Data Management</span>
+                    <span class="skill-tag">Research Presentations</span>
+                    <span class="skill-tag">Literature Review</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-link">&larr; Back to home</a>
+
+</body>
+</html>

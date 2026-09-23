@@ -1,118 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarah Taylor Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarah Taylor Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #0b1613; --panel: rgba(255,255,255,0.04); --panel-border: rgba(94,230,165,0.18);
+        --accent: #4ade80; --accent-soft: #7dffc0; --text: #e8f5ee; --text-muted: #8fae9c;
+        --mono: 'JetBrains Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0; color: var(--text); font-family: var(--sans); text-align: center;
+        background:
+            radial-gradient(circle at 18% 12%, rgba(74,222,128,0.10), transparent 42%),
+            radial-gradient(circle at 85% 78%, rgba(56,189,178,0.09), transparent 45%),
+            repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 42px),
+            repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 42px),
+            var(--bg);
+        min-height: 100vh;
+    }
+    a { text-decoration: none; }
+    nav {
+        position: sticky; top: 0; z-index: 10; background-color: rgba(11,22,19,0.85);
+        backdrop-filter: blur(10px); padding: 16px 20px; border-bottom: 1px solid var(--panel-border);
+        display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
+    }
+    nav a { color: var(--text-muted); font-family: var(--mono); font-size: 0.85em; font-weight: 600; padding: 7px 12px; border-radius: 6px; transition: 0.2s; letter-spacing: 0.5px; }
+    nav a:hover { color: var(--accent-soft); background-color: rgba(94,230,165,0.08); }
+    nav a.active { color: var(--bg); background-color: var(--accent); }
 
-        body {
-            background: radial-gradient(circle at 15% 10%, #ddf0e8 0%, transparent 40%),
-                        radial-gradient(circle at 85% 90%, #d8ecec 0%, transparent 40%),
-                        #eaf6f6;
-            color: #2e4d3f;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 50px 20px;
-        }
+    .page-wrap { max-width: 600px; margin: 0 auto; padding: 60px 20px 40px; }
+    .eyebrow { font-family: var(--mono); color: var(--accent); font-size: 0.85em; letter-spacing: 1px; margin-bottom: 10px; }
+    h1 { font-size: 2.2em; margin: 0 0 8px; font-weight: 700; }
+    .divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-soft)); border-radius: 2px; margin: 20px auto 40px; }
 
-        h1 {
-            color: #3a7d5c;
-            font-size: 2.4em;
-            margin-bottom: 8px;
-        }
+    .photo-container { margin: 0 auto 50px; }
+    .photo-container img {
+        width: 100%; max-width: 420px; border-radius: 14px;
+        border: 2px solid var(--panel-border); box-shadow: 0 0 30px rgba(74,222,128,0.15);
+    }
 
-        .divider {
-            width: 80px;
-            height: 4px;
-            background-color: #4caf7d;
-            border-radius: 2px;
-            margin: 20px auto 40px;
-        }
+    .lab-question h2 { color: var(--text); font-size: 1.4em; margin-bottom: 28px; }
+    .button-playground {
+        position: relative; height: 220px; margin: 0 auto 50px;
+        display: flex; align-items: center; justify-content: center; gap: 20px;
+        background-color: var(--panel); border: 1px solid var(--panel-border); border-radius: 16px;
+    }
+    button {
+        font-family: var(--mono); font-weight: 600; padding: 14px 30px; font-size: 1em;
+        border-radius: 8px; cursor: pointer; transition: 0.2s;
+    }
+    #yesBtn {
+        background-color: transparent; color: var(--accent); border: 1px solid var(--accent);
+    }
+    #yesBtn:hover { background-color: var(--accent); color: var(--bg); box-shadow: 0 0 20px rgba(74,222,128,0.4); }
+    #noBtn {
+        background-color: transparent; color: var(--text-muted); border: 1px solid var(--panel-border);
+        transition: left 0.15s ease, top 0.15s ease;
+    }
 
-        a {
-            text-decoration: none;
-        }
-
-        .photo-container {
-            max-width: 500px;
-            margin: 0 auto 50px;
-        }
-
-        .photo-container img {
-            width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(58, 125, 92, 0.35);
-            border: 4px solid white;
-        }
-
-        .lab-question h2 {
-            color: #3a7d5c;
-            font-size: 1.6em;
-            margin-bottom: 30px;
-        }
-
-        .button-playground {
-            position: relative;
-            max-width: 500px;
-            height: 220px;
-            margin: 0 auto 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            background-color: rgba(255, 255, 255, 0.4);
-            border-radius: 20px;
-        }
-
-        button {
-            background-color: #4caf7d;
-            color: white;
-            border: none;
-            padding: 16px 32px;
-            font-size: 18px;
-            font-weight: bold;
-            font-family: 'Poppins', sans-serif;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(76, 175, 125, 0.4);
-            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        button:hover {
-            background-color: #3a8f66;
-            transform: scale(1.05);
-            box-shadow: 0 6px 16px rgba(76, 175, 125, 0.55);
-        }
-
-        #noBtn {
-            transition: left 0.15s ease, top 0.15s ease;
-        }
-
-        #noBtn:hover {
-            transform: none;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #3a7d5c;
-            font-weight: bold;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+    .back-link { display: inline-block; margin-top: 10px; color: var(--accent); font-family: var(--mono); font-size: 0.9em; }
+    .back-link:hover { color: var(--accent-soft); }
+</style>
 </head>
-
 <body>
 
+<nav>
+    <a href="index.html">home</a>
+    <a href="research.html">research_&amp;_skills</a>
+    <a href="experience.html">experience</a>
+    <a href="professors.html" class="active">for_professors</a>
+</nav>
+
+<div class="page-wrap">
+
+    <p class="eyebrow">$ sudo add_to_lab --candidate=sarah</p>
     <h1>Hi Professors!</h1>
     <div class="divider"></div>
 
@@ -124,43 +89,36 @@
         <h2>Would you want me in your lab?</h2>
         <div class="button-playground" id="playground">
             <a href="mailto:mtsarah016@gmail.com?subject=I'd love to have you in my lab!">
-                <button id="yesBtn">Yes</button>
+                <button id="yesBtn">yes</button>
             </a>
-            <button id="noBtn">No</button>
+            <button id="noBtn">no</button>
         </div>
     </div>
 
-    <a href="index.html" class="back-link">&larr; Back to home</a>
+    <a href="index.html" class="back-link">&larr; back_to_home</a>
 
-    <script>
-        const noBtn = document.getElementById('noBtn');
-        const playground = document.getElementById('playground');
+</div>
 
-        function moveButton() {
-            const containerRect = playground.getBoundingClientRect();
-            const btnRect = noBtn.getBoundingClientRect();
+<script>
+    const noBtn = document.getElementById('noBtn');
+    const playground = document.getElementById('playground');
 
-            const maxX = containerRect.width - btnRect.width - 10;
-            const maxY = containerRect.height - btnRect.height - 10;
+    function moveButton() {
+        const containerRect = playground.getBoundingClientRect();
+        const btnRect = noBtn.getBoundingClientRect();
+        const maxX = containerRect.width - btnRect.width - 10;
+        const maxY = containerRect.height - btnRect.height - 10;
+        const newX = Math.random() * maxX;
+        const newY = Math.random() * maxY;
+        noBtn.style.position = 'absolute';
+        noBtn.style.left = newX + 'px';
+        noBtn.style.top = newY + 'px';
+    }
 
-            const newX = Math.random() * maxX;
-            const newY = Math.random() * maxY;
-
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = newX + 'px';
-            noBtn.style.top = newY + 'px';
-        }
-
-        noBtn.addEventListener('mouseover', moveButton);
-        noBtn.addEventListener('touchstart', function (e) {
-            e.preventDefault();
-            moveButton();
-        });
-        noBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            moveButton();
-        });
-    </script>
+    noBtn.addEventListener('mouseover', moveButton);
+    noBtn.addEventListener('touchstart', function (e) { e.preventDefault(); moveButton(); });
+    noBtn.addEventListener('click', function (e) { e.preventDefault(); moveButton(); });
+</script>
 
 </body>
 </html>

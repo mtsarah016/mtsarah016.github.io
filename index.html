@@ -1,371 +1,971 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarah Taylor Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarah Taylor Portfolio</title>
 
-        body {
-            background: radial-gradient(circle at 15% 10%, #ddf0e8 0%, transparent 40%),
-                        radial-gradient(circle at 85% 90%, #d8ecec 0%, transparent 40%),
-                        #eaf6f6;
-            color: #2e4d3f;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-        a {
-            text-decoration: none;
+<style>
+    :root {
+        --bg: #07100d;
+        --bg-light: #0b1814;
+        --panel: rgba(13, 30, 24, 0.72);
+        --panel-hover: rgba(16, 40, 31, 0.85);
+        --border: rgba(74, 222, 128, 0.18);
+        --border-bright: rgba(74, 222, 128, 0.55);
+        --accent: #4ade80;
+        --accent-soft: #8dffc3;
+        --cyan: #5eead4;
+        --text: #e9f7ef;
+        --muted: #88a998;
+        --mono: 'JetBrains Mono', monospace;
+        --sans: 'Space Grotesk', sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        color: var(--text);
+        font-family: var(--sans);
+        text-align: center;
+        background:
+            radial-gradient(circle at 50% -10%, rgba(74,222,128,0.13), transparent 35%),
+            radial-gradient(circle at 0% 55%, rgba(94,234,212,0.06), transparent 30%),
+            radial-gradient(circle at 100% 80%, rgba(74,222,128,0.07), transparent 30%),
+            var(--bg);
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* -------------------- BACKGROUND -------------------- */
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.35;
+        background-image:
+            linear-gradient(rgba(74,222,128,0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(74,222,128,0.035) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: linear-gradient(to bottom, black, transparent 90%);
+        z-index: -2;
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+            repeating-linear-gradient(
+                0deg,
+                rgba(255,255,255,0.012) 0px,
+                rgba(255,255,255,0.012) 1px,
+                transparent 1px,
+                transparent 5px
+            );
+        opacity: 0.25;
+        z-index: 20;
+        mix-blend-mode: overlay;
+    }
+
+    /* -------------------- NAVIGATION -------------------- */
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+
+        padding: 12px 20px;
+
+        background: rgba(5, 14, 11, 0.78);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        border-bottom: 1px solid rgba(74,222,128,0.12);
+    }
+
+    nav::before {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 50%;
+        width: 160px;
+        height: 1px;
+        transform: translateX(-50%);
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--accent),
+            transparent
+        );
+        box-shadow: 0 0 12px var(--accent);
+    }
+
+    nav a {
+        position: relative;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.78em;
+        font-weight: 600;
+        padding: 8px 13px;
+        border-radius: 5px;
+        letter-spacing: 0.4px;
+        transition: all 0.25s ease;
+    }
+
+    nav a::before {
+        content: "//";
+        color: rgba(74,222,128,0);
+        margin-right: 5px;
+        transition: 0.25s;
+    }
+
+    nav a:hover {
+        color: var(--accent-soft);
+        background: rgba(74,222,128,0.07);
+        text-shadow: 0 0 10px rgba(74,222,128,0.5);
+    }
+
+    nav a:hover::before {
+        color: var(--accent);
+    }
+
+    nav a.active {
+        color: var(--bg);
+        background: var(--accent);
+        box-shadow:
+            0 0 12px rgba(74,222,128,0.25),
+            inset 0 0 10px rgba(255,255,255,0.15);
+    }
+
+    /* -------------------- PAGE -------------------- */
+
+    .page-wrap {
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 45px 20px 40px;
+    }
+
+    /* -------------------- TERMINAL STATUS -------------------- */
+
+    .status-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 760px;
+        margin: 0 auto 35px;
+
+        padding: 8px 13px;
+
+        border: 1px solid rgba(74,222,128,0.13);
+        border-radius: 5px;
+
+        background: rgba(74,222,128,0.025);
+
+        font-family: var(--mono);
+        font-size: 0.67em;
+        color: var(--muted);
+        text-align: left;
+    }
+
+    .status-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 10px var(--accent);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+            box-shadow: 0 0 8px var(--accent);
         }
+        50% {
+            opacity: 0.45;
+            box-shadow: 0 0 18px var(--accent);
+        }
+    }
+
+    /* -------------------- HERO -------------------- */
+
+    .hero {
+        position: relative;
+        padding: 55px 20px 65px;
+    }
+
+    .hero::before {
+        content: "";
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        left: 50%;
+        top: 45%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(74,222,128,0.16) 0%,
+                rgba(74,222,128,0.07) 28%,
+                transparent 68%
+            );
+
+        filter: blur(5px);
+        z-index: -1;
+        animation: breathe 6s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+        0%, 100% {
+            transform: translate(-50%, -50%) scale(0.95);
+            opacity: 0.7;
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.08);
+            opacity: 1;
+        }
+    }
+
+    .eyebrow {
+        font-family: var(--mono);
+        color: var(--accent);
+        font-size: 0.78em;
+        letter-spacing: 1.5px;
+        margin-bottom: 15px;
+    }
+
+    .hero h1 {
+        font-size: clamp(3em, 8vw, 5.8em);
+        line-height: 0.95;
+        margin: 0;
+        font-weight: 700;
+        letter-spacing: -4px;
+
+        background: linear-gradient(
+            120deg,
+            #ffffff 10%,
+            var(--accent-soft) 50%,
+            var(--accent) 90%
+        );
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        filter: drop-shadow(0 0 22px rgba(74,222,128,0.14));
+    }
+
+    .tagline {
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.92em;
+        letter-spacing: 0.3px;
+    }
+
+    .tagline::before {
+        content: "[ ";
+        color: var(--accent);
+    }
+
+    .tagline::after {
+        content: " ]";
+        color: var(--accent);
+    }
+
+    .divider {
+        width: 110px;
+        height: 1px;
+        margin: 28px auto 0;
+
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--accent),
+            transparent
+        );
+
+        box-shadow: 0 0 12px rgba(74,222,128,0.7);
+    }
+
+    /* -------------------- ABOUT -------------------- */
+
+    .about-me {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: center;
+        gap: 45px;
+
+        padding: 38px;
+
+        text-align: left;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(74,222,128,0.055),
+                rgba(255,255,255,0.018)
+            );
+
+        border: 1px solid var(--border);
+        border-radius: 12px;
+
+        box-shadow:
+            0 25px 70px rgba(0,0,0,0.25),
+            inset 0 1px 0 rgba(255,255,255,0.035);
+
+        overflow: hidden;
+    }
+
+    .about-me::before {
+        content: "";
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        right: -70px;
+        top: -70px;
+        border-radius: 50%;
+        border: 1px solid rgba(74,222,128,0.15);
+        box-shadow:
+            0 0 0 20px rgba(74,222,128,0.02),
+            0 0 0 40px rgba(74,222,128,0.015);
+    }
+
+    .about-me::after {
+        content: "01";
+        position: absolute;
+        top: 14px;
+        right: 20px;
+        font-family: var(--mono);
+        font-size: 0.65em;
+        color: rgba(74,222,128,0.3);
+    }
+
+    .about-text {
+        min-width: 0;
+    }
+
+    .about-text h2 {
+        color: var(--text);
+        margin: 0 0 12px;
+        font-size: 1.65em;
+    }
+
+    .about-text h2::before {
+        content: "> ";
+        color: var(--accent);
+        font-family: var(--mono);
+    }
+
+    .about-text p {
+        line-height: 1.8;
+        color: var(--muted);
+        margin: 0 0 15px;
+        font-size: 0.94em;
+    }
+
+    .about-photo {
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+
+    .about-photo::before {
+        content: "";
+        position: absolute;
+        width: 240px;
+        height: 240px;
+        border: 1px solid rgba(74,222,128,0.18);
+        border-radius: 50%;
+        animation: rotate-ring 18s linear infinite;
+    }
+
+    .about-photo::after {
+        content: "ENVIRONMENTAL // COMPUTATIONAL";
+        position: absolute;
+        bottom: -25px;
+        font-family: var(--mono);
+        font-size: 0.52em;
+        letter-spacing: 1px;
+        color: rgba(74,222,128,0.45);
+    }
+
+    @keyframes rotate-ring {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .about-photo img {
+        position: relative;
+        width: 205px;
+        height: 205px;
+        object-fit: cover;
+
+        border-radius: 50%;
+
+        border: 2px solid var(--accent);
+
+        box-shadow:
+            0 0 0 7px rgba(74,222,128,0.035),
+            0 0 35px rgba(74,222,128,0.2);
+
+        z-index: 2;
+    }
+
+    /* -------------------- SECTION -------------------- */
+
+    section {
+        margin-bottom: 60px;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .section-title {
+        font-family: var(--mono);
+        color: var(--accent);
+        font-size: 0.8em;
+        letter-spacing: 1px;
+        white-space: nowrap;
+        text-align: left;
+    }
+
+    .section-line {
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(
+            90deg,
+            rgba(74,222,128,0.25),
+            transparent
+        );
+    }
+
+    /* -------------------- ACTION CARDS -------------------- */
+
+    .action-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .action-card {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+
+        min-height: 105px;
+        padding: 22px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255,255,255,0.035),
+                rgba(74,222,128,0.025)
+            );
+
+        border: 1px solid var(--border);
+        border-radius: 9px;
+
+        color: var(--text);
+        font-family: var(--mono);
+        font-size: 0.78em;
+        font-weight: 600;
+
+        text-align: left;
+
+        overflow: hidden;
+        transition:
+            transform 0.25s ease,
+            border-color 0.25s ease,
+            background 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    .action-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background: var(--accent);
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.25s ease;
+        box-shadow: 0 0 15px var(--accent);
+    }
+
+    .action-card::after {
+        content: "↗";
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        color: rgba(74,222,128,0.3);
+        font-size: 1.2em;
+        transition: 0.25s;
+    }
+
+    .action-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--border-bright);
+        background: var(--panel-hover);
+        box-shadow:
+            0 15px 35px rgba(0,0,0,0.25),
+            0 0 25px rgba(74,222,128,0.08);
+        color: var(--accent-soft);
+    }
+
+    .action-card:hover::before {
+        transform: scaleY(1);
+    }
+
+    .action-card:hover::after {
+        color: var(--accent);
+        transform: translate(2px, -2px);
+    }
+
+    .action-icon {
+        width: 45px;
+        height: 45px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+
+        border: 1px solid var(--border);
+        border-radius: 7px;
+
+        background: rgba(74,222,128,0.045);
+
+        font-size: 1.4em;
+
+        transition: 0.25s;
+    }
+
+    .action-card:hover .action-icon {
+        border-color: var(--accent);
+        box-shadow: 0 0 18px rgba(74,222,128,0.18);
+        transform: rotate(-3deg);
+    }
+
+    /* -------------------- CONTACT -------------------- */
+
+    .contact-section {
+        position: relative;
+        padding: 40px 30px;
+
+        background:
+            radial-gradient(
+                circle at 50% 100%,
+                rgba(74,222,128,0.08),
+                transparent 55%
+            ),
+            rgba(255,255,255,0.025);
+
+        border: 1px solid var(--border);
+        border-radius: 12px;
+
+        overflow: hidden;
+    }
+
+    .contact-section::before,
+    .contact-section::after {
+        content: "";
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        border-color: var(--accent);
+        opacity: 0.5;
+    }
+
+    .contact-section::before {
+        top: 10px;
+        left: 10px;
+        border-top: 1px solid;
+        border-left: 1px solid;
+    }
+
+    .contact-section::after {
+        bottom: 10px;
+        right: 10px;
+        border-bottom: 1px solid;
+        border-right: 1px solid;
+    }
+
+    .contact-section h2 {
+        margin: 0 0 8px;
+        font-size: 1.45em;
+    }
+
+    .contact-section p {
+        color: var(--muted);
+        margin: 0 auto 22px;
+        line-height: 1.6;
+        font-size: 0.92em;
+    }
+
+    .contact-email {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+
+        background: transparent;
+        color: var(--accent);
+
+        border: 1px solid var(--accent);
+        padding: 12px 23px;
+        border-radius: 6px;
+
+        font-family: var(--mono);
+        font-size: 0.82em;
+        font-weight: 600;
+
+        transition: 0.25s;
+    }
+
+    .contact-email:hover {
+        background: var(--accent);
+        color: var(--bg);
+
+        box-shadow:
+            0 0 20px rgba(74,222,128,0.3),
+            0 0 50px rgba(74,222,128,0.08);
+    }
+
+    /* -------------------- FOOTER -------------------- */
+
+    footer {
+        padding: 25px 0 30px;
+    }
+
+    footer p.footer-label {
+        color: rgba(143,174,156,0.65);
+        font-family: var(--mono);
+        font-size: 0.68em;
+        margin-bottom: 16px;
+        letter-spacing: 1.5px;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .social-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 7px;
+
+        color: var(--muted);
+        font-size: 0.68em;
+        font-family: var(--mono);
+
+        transition: 0.25s;
+    }
+
+    .icon-circle {
+        width: 45px;
+        height: 45px;
+
+        border-radius: 8px;
+
+        background: rgba(255,255,255,0.025);
+        border: 1px solid var(--border);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: 0.25s;
+    }
+
+    .social-icon:hover {
+        color: var(--accent-soft);
+    }
+
+    .social-icon:hover .icon-circle {
+        border-color: var(--accent);
+        box-shadow: 0 0 20px rgba(74,222,128,0.18);
+        transform: translateY(-3px);
+    }
+
+    .social-icon:hover .icon-circle svg {
+        fill: var(--accent-soft);
+    }
+
+    .icon-circle svg {
+        transition: 0.25s;
+        fill: var(--muted);
+    }
+
+    /* -------------------- MOBILE -------------------- */
+
+    @media (max-width: 700px) {
 
         nav {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background-color: rgba(234, 246, 246, 0.9);
-            backdrop-filter: blur(8px);
-            padding: 16px 20px;
-            box-shadow: 0 2px 12px rgba(58, 125, 92, 0.1);
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            gap: 3px;
+            padding: 10px 8px;
         }
 
         nav a {
-            color: #3a7d5c;
-            font-weight: 600;
-            font-size: 0.95em;
-            padding: 6px 10px;
-            border-radius: 8px;
-            transition: background-color 0.2s ease;
-        }
-
-        nav a:hover {
-            background-color: rgba(76, 175, 125, 0.15);
-        }
-
-        nav a.active {
-            background-color: #4caf7d;
-            color: white;
+            font-size: 0.68em;
+            padding: 7px 8px;
         }
 
         .page-wrap {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 50px 20px 20px;
+            padding: 30px 15px;
         }
 
-        h1 {
-            color: #3a7d5c;
-            font-size: 2.6em;
-            margin-bottom: 8px;
+        .hero {
+            padding: 40px 10px 50px;
         }
 
-        .tagline {
-            color: #5c8a76;
-            font-size: 1.1em;
-            font-weight: 400;
-            margin-top: 0;
-            margin-bottom: 20px;
-            letter-spacing: 0.3px;
-        }
-
-        .divider {
-            width: 80px;
-            height: 4px;
-            background-color: #4caf7d;
-            border-radius: 2px;
-            margin: 30px auto 45px;
-        }
-
-        section {
-            margin-bottom: 55px;
-        }
-
-        .section-title {
-            color: #3a7d5c;
-            font-size: 1.3em;
-            font-weight: 700;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.85;
+        .hero h1 {
+            letter-spacing: -2px;
         }
 
         .about-me {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            padding: 40px;
-            flex-wrap: wrap;
-            background-color: rgba(255, 255, 255, 0.55);
-            border-radius: 24px;
-            box-shadow: 0 8px 30px rgba(58, 125, 92, 0.15);
-            backdrop-filter: blur(4px);
+            grid-template-columns: 1fr;
+            text-align: center;
+            padding: 30px 22px 45px;
+            gap: 35px;
         }
 
         .about-text {
-            flex: 1;
-            min-width: 260px;
-            text-align: left;
             order: 2;
-        }
-
-        .about-text h2 {
-            color: #3a7d5c;
-            margin-bottom: 15px;
-            font-size: 1.6em;
-            margin-top: 0;
-        }
-
-        .about-text p {
-            line-height: 1.7;
-            margin-bottom: 15px;
+            text-align: left;
         }
 
         .about-photo {
-            flex: 1;
-            min-width: 180px;
-            display: flex;
-            justify-content: center;
             order: 1;
         }
 
-        .about-photo img {
-            width: 100%;
-            max-width: 260px;
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(58, 125, 92, 0.35);
-            border: 4px solid white;
+        .about-me::after {
+            display: none;
         }
 
         .action-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: 1fr;
+        }
+
+        .status-bar {
+            font-size: 0.57em;
+        }
+    }
+
+    @media (max-width: 420px) {
+
+        nav {
+            justify-content: center;
+        }
+
+        nav a {
+            font-size: 0.61em;
+            padding: 6px;
+        }
+
+        .hero h1 {
+            font-size: 3.1em;
+        }
+
+        .tagline {
+            font-size: 0.73em;
         }
 
         .action-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: rgba(255, 255, 255, 0.55);
-            border-radius: 18px;
-            padding: 30px 20px;
-            box-shadow: 0 6px 20px rgba(58, 125, 92, 0.12);
-            color: #2e4d3f;
-            font-weight: 600;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            min-height: 90px;
         }
+    }
+</style>
 
-        .action-card:hover {
-            transform: translateY(-4px);
-            background-color: #4caf7d;
-            color: white;
-            box-shadow: 0 10px 24px rgba(76, 175, 125, 0.35);
-        }
-
-        .action-icon {
-            font-size: 2em;
-        }
-
-        .contact-section {
-            background-color: rgba(255, 255, 255, 0.55);
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(58, 125, 92, 0.15);
-            padding: 35px 30px;
-        }
-
-        .contact-section h2 {
-            color: #3a7d5c;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.4em;
-        }
-
-        .contact-section p {
-            color: #2e4d3f;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .contact-email {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #4caf7d;
-            color: white;
-            padding: 12px 26px;
-            border-radius: 30px;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(76, 175, 125, 0.4);
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-
-        .contact-email:hover {
-            background-color: #3a8f66;
-            transform: scale(1.05);
-        }
-
-        footer {
-            padding: 30px 0 40px;
-        }
-
-        footer p.footer-label {
-            color: #5c8a76;
-            font-size: 0.85em;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .social-icon {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            color: #3a7d5c;
-            font-size: 0.85em;
-            font-weight: 600;
-        }
-
-        .icon-circle {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background-color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(58, 125, 92, 0.25);
-            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .social-icon:hover .icon-circle {
-            background-color: #4caf7d;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 18px rgba(76, 175, 125, 0.4);
-        }
-
-        .social-icon:hover .icon-circle svg {
-            fill: white;
-        }
-
-        .icon-circle svg {
-            transition: fill 0.2s ease;
-        }
-
-        @media (max-width: 560px) {
-            .action-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <nav>
-        <a href="index.html" class="active">Home</a>
-        <a href="research.html">Research &amp; Skills</a>
-        <a href="experience.html">Experience</a>
-        <a href="professors.html">For Professors</a>
-    </nav>
+<nav>
+    <a href="index.html" class="active">home</a>
+    <a href="research.html">research_&amp;_skills</a>
+    <a href="experience.html">experience</a>
+    <a href="professors.html">for_professors</a>
+</nav>
 
-    <div class="page-wrap">
+<div class="page-wrap">
 
-        <h1>Sarah Taylor Portfolio</h1>
-        <p class="tagline">Computational Environmental Scientist &middot; Aspiring Graduate Researcher</p>
-        <div class="divider"></div>
+```
+<div class="status-bar">
+    <div class="status-left">
+        <span class="status-dot"></span>
+        <span>SYSTEM ONLINE</span>
+    </div>
+    <span>ENVIRONMENTAL_RESEARCH // 2026</span>
+</div>
 
-        <section class="about-me">
-            <div class="about-text">
-                <h2>About Me</h2>
-                <p>
-                    In May 2026, I graduated from Rhodes College with my Bachelors of Science in
-                    Computer Science and Environmental Science. I currently work as a Research Technician/
-                    Lab Manager for Herbert Wertheim UF Scripps Institute for Biomedical Innovation and
-                    Technology.
-                </p>
-                <p>
-                    My next step is to go to grad school and work closely with a PI in their lab.
-                </p>
-            </div>
-            <div class="about-photo">
-                <img src="sarah.jpg" alt="Sarah Taylor">
-            </div>
-        </section>
+<header class="hero">
+    <p class="eyebrow">$ whoami</p>
 
-        <section>
-            <div class="section-title">Quick Links</div>
-            <div class="action-grid">
-                <a href="research.html" class="action-card">
-                    <span class="action-icon">🔬</span>
-                    Research &amp; Skills
-                </a>
-                <a href="experience.html" class="action-card">
-                    <span class="action-icon">🧭</span>
-                    Experience Timeline
-                </a>
-                <a href="Sarah_Taylor_CV.pdf" download class="action-card">
-                    <span class="action-icon">📄</span>
-                    Download My CV
-                </a>
-                <a href="professors.html" class="action-card">
-                    <span class="action-icon">🎓</span>
-                    For Professors
-                </a>
-            </div>
-        </section>
+    <h1>Sarah Taylor</h1>
 
-        <section class="contact-section">
-            <h2>Get in Touch</h2>
-            <p>Recruiter, collaborator, or just want to connect? I'd love to hear from you.</p>
-            <a href="mailto:mtsarah016@gmail.com" class="contact-email">
-                ✉️ mtsarah016@gmail.com
-            </a>
-        </section>
+    <p class="tagline">
+        Computational Environmental Scientist &middot; Aspiring Graduate Researcher
+    </p>
 
-        <footer>
-            <p class="footer-label">Find me online</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/sarah-taylor-environmental001" target="_blank" class="social-icon">
-                    <div class="icon-circle">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#3a7d5c">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </div>
-                    LinkedIn
-                </a>
-                <a href="https://github.com/mtsarah016" target="_blank" class="social-icon">
-                    <div class="icon-circle">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#3a7d5c">
-                            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.26.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.605-2.665-.303-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.51 11.51 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </div>
-                    GitHub
-                </a>
-            </div>
-        </footer>
+    <div class="divider"></div>
+</header>
+
+<section class="about-me">
+
+    <div class="about-text">
+        <h2>About Me</h2>
+
+        <p>
+            In May 2026, I graduated from Rhodes College with my Bachelors of Science in
+            Computer Science and Environmental Science. I currently work as a Research Technician/
+            Lab Manager for Herbert Wertheim UF Scripps Institute for Biomedical Innovation and
+            Technology.
+        </p>
+
+        <p>
+            My next step is to go to grad school and work closely with a PI in their lab.
+        </p>
+    </div>
+
+    <div class="about-photo">
+        <img src="sarah.jpg" alt="Sarah Taylor">
+    </div>
+
+</section>
+
+<section>
+
+    <div class="section-header">
+        <div class="section-title">$ ls ./pages</div>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="action-grid">
+
+        <a href="research.html" class="action-card">
+            <span class="action-icon">🧬</span>
+            <span>research_&amp;_skills</span>
+        </a>
+
+        <a href="experience.html" class="action-card">
+            <span class="action-icon">📡</span>
+            <span>experience_timeline</span>
+        </a>
+
+        <a href="Sarah_Taylor_CV.pdf" download class="action-card">
+            <span class="action-icon">📄</span>
+            <span>download_cv.pdf</span>
+        </a>
+
+        <a href="professors.html" class="action-card">
+            <span class="action-icon">🔬</span>
+            <span>for_professors</span>
+        </a>
 
     </div>
+
+</section>
+
+<section class="contact-section">
+
+    <p class="eyebrow" style="margin-bottom:7px;">
+        $ mailto
+    </p>
+
+    <h2>Get in Touch</h2>
+
+    <p>
+        Recruiter, collaborator, or just want to connect?
+        I'd love to hear from you.
+    </p>
+
+    <a href="mailto:mtsarah016@gmail.com" class="contact-email">
+        ✉ mtsarah016@gmail.com
+    </a>
+
+</section>
+
+<footer>
+
+    <p class="footer-label">// find_me_online</p>
+
+    <div class="social-links">
+
+        <a href="https://www.linkedin.com/in/sarah-taylor-environmental001"
+           target="_blank"
+           class="social-icon">
+
+            <div class="icon-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+            </div>
+
+            linkedin
+
+        </a>
+
+        <a href="https://github.com/mtsarah016"
+           target="_blank"
+           class="social-icon">
+
+            <div class="icon-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.26.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.605-2.665-.303-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.51 11.51 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </div>
+
+            github
+
+        </a>
+
+    </div>
+
+</footer>
+```
+
+</div>
 
 </body>
 </html>

@@ -1,154 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarah Taylor Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarah Taylor Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #0b1613; --panel: rgba(255,255,255,0.04); --panel-border: rgba(94,230,165,0.18);
+        --accent: #4ade80; --accent-soft: #7dffc0; --text: #e8f5ee; --text-muted: #8fae9c;
+        --mono: 'JetBrains Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0; color: var(--text); font-family: var(--sans); text-align: center;
+        background:
+            radial-gradient(circle at 18% 12%, rgba(74,222,128,0.10), transparent 42%),
+            radial-gradient(circle at 85% 78%, rgba(56,189,178,0.09), transparent 45%),
+            repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 42px),
+            repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 42px),
+            var(--bg);
+        min-height: 100vh;
+    }
+    a { text-decoration: none; }
+    nav {
+        position: sticky; top: 0; z-index: 10; background-color: rgba(11,22,19,0.85);
+        backdrop-filter: blur(10px); padding: 16px 20px; border-bottom: 1px solid var(--panel-border);
+        display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
+    }
+    nav a { color: var(--text-muted); font-family: var(--mono); font-size: 0.85em; font-weight: 600; padding: 7px 12px; border-radius: 6px; transition: 0.2s; letter-spacing: 0.5px; }
+    nav a:hover { color: var(--accent-soft); background-color: rgba(94,230,165,0.08); }
+    nav a.active { color: var(--bg); background-color: var(--accent); }
 
-        body {
-            background: radial-gradient(circle at 15% 10%, #ddf0e8 0%, transparent 40%),
-                        radial-gradient(circle at 85% 90%, #d8ecec 0%, transparent 40%),
-                        #eaf6f6;
-            color: #2e4d3f;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 50px 20px;
-        }
+    .page-wrap { max-width: 820px; margin: 0 auto; padding: 60px 20px 20px; }
+    .eyebrow { font-family: var(--mono); color: var(--accent); font-size: 0.85em; letter-spacing: 1px; margin-bottom: 10px; }
+    h1 { font-size: 2.3em; margin: 0 0 8px; font-weight: 700; }
+    .divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-soft)); border-radius: 2px; margin: 20px auto 45px; }
 
-        h1 {
-            color: #3a7d5c;
-            font-size: 2.4em;
-            margin-bottom: 8px;
-        }
+    .section-heading { font-family: var(--mono); color: var(--accent); font-size: 0.95em; margin-bottom: 22px; text-align: left; letter-spacing: 1px; }
 
-        .divider {
-            width: 80px;
-            height: 4px;
-            background-color: #4caf7d;
-            border-radius: 2px;
-            margin: 20px auto 50px;
-        }
+    .projects { display: flex; flex-direction: column; gap: 22px; margin-bottom: 55px; }
+    .project-card {
+        background-color: var(--panel); border: 1px solid var(--panel-border); border-radius: 14px;
+        padding: 28px; text-align: left;
+    }
+    .project-title { font-size: 1.2em; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .project-subtitle { font-size: 0.88em; color: var(--accent-soft); font-family: var(--mono); margin-bottom: 15px; }
+    .project-card ul { margin: 0; padding-left: 20px; line-height: 1.7; color: var(--text-muted); }
+    .project-card li { margin-bottom: 8px; }
 
-        a {
-            text-decoration: none;
-        }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; text-align: left; }
+    .skill-category { background-color: var(--panel); border: 1px solid var(--panel-border); border-radius: 12px; padding: 20px; }
+    .skill-category h3 { color: var(--accent-soft); font-family: var(--mono); font-size: 0.9em; margin: 0 0 12px; letter-spacing: 0.5px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+        background-color: transparent; color: var(--text-muted); border: 1px solid var(--panel-border);
+        font-size: 0.8em; font-family: var(--mono); padding: 5px 12px; border-radius: 20px; transition: 0.2s;
+    }
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent-soft); }
 
-        .section-heading {
-            color: #3a7d5c;
-            font-size: 1.8em;
-            margin-bottom: 30px;
-            text-align: left;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .projects {
-            max-width: 800px;
-            margin: 0 auto 60px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .project-card {
-            background-color: rgba(255, 255, 255, 0.55);
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(58, 125, 92, 0.15);
-            padding: 30px;
-            text-align: left;
-        }
-
-        .project-title {
-            font-size: 1.25em;
-            font-weight: 700;
-            color: #2e4d3f;
-            margin-bottom: 4px;
-        }
-
-        .project-subtitle {
-            font-size: 0.95em;
-            color: #5c8a76;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-
-        .project-card ul {
-            margin: 0;
-            padding-left: 20px;
-            line-height: 1.7;
-        }
-
-        .project-card li {
-            margin-bottom: 8px;
-        }
-
-        .skills-section {
-            max-width: 800px;
-            margin: 0 auto 50px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            text-align: left;
-        }
-
-        .skill-category {
-            background-color: rgba(255, 255, 255, 0.55);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 6px 18px rgba(58, 125, 92, 0.12);
-        }
-
-        .skill-category h3 {
-            color: #3a7d5c;
-            font-size: 1.05em;
-            margin-top: 0;
-            margin-bottom: 12px;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            background-color: #4caf7d;
-            color: white;
-            font-size: 0.85em;
-            font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 20px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #3a7d5c;
-            font-weight: bold;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+    .back-link { display: inline-block; margin: 45px 0 30px; color: var(--accent); font-family: var(--mono); font-size: 0.9em; }
+    .back-link:hover { color: var(--accent-soft); }
+</style>
 </head>
-
 <body>
 
+<nav>
+    <a href="index.html">home</a>
+    <a href="research.html" class="active">research_&amp;_skills</a>
+    <a href="experience.html">experience</a>
+    <a href="professors.html">for_professors</a>
+</nav>
+
+<div class="page-wrap">
+
+    <p class="eyebrow">$ cat research_log.txt</p>
     <h1>Research &amp; Skills</h1>
     <div class="divider"></div>
 
-    <h2 class="section-heading">Research Projects</h2>
+    <div class="section-heading">// research_projects</div>
     <div class="projects">
         <div class="project-card">
             <div class="project-title">Adaptive Resource Allocation Under Climate Change</div>
@@ -172,66 +102,50 @@
         </div>
     </div>
 
-    <h2 class="section-heading">Skills</h2>
-    <div class="skills-section">
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Programming</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">C</span>
-                    <span class="skill-tag">R</span>
-                    <span class="skill-tag">NetLogo</span>
-                    <span class="skill-tag">Git/GitHub</span>
-                </div>
+    <div class="section-heading">$ skills --list</div>
+    <div class="skills-grid">
+        <div class="skill-category">
+            <h3>programming</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Python</span><span class="skill-tag">Java</span>
+                <span class="skill-tag">C</span><span class="skill-tag">R</span>
+                <span class="skill-tag">NetLogo</span><span class="skill-tag">Git/GitHub</span>
             </div>
-
-            <div class="skill-category">
-                <h3>Computational &amp; Data</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Computational Modeling</span>
-                    <span class="skill-tag">Agent-Based Modeling</span>
-                    <span class="skill-tag">Data Analysis</span>
-                    <span class="skill-tag">Spatial Analysis</span>
-                </div>
+        </div>
+        <div class="skill-category">
+            <h3>computational_&amp;_data</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Computational Modeling</span><span class="skill-tag">Agent-Based Modeling</span>
+                <span class="skill-tag">Data Analysis</span><span class="skill-tag">Spatial Analysis</span>
             </div>
-
-            <div class="skill-category">
-                <h3>GIS</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">ArcGIS</span>
-                    <span class="skill-tag">ArcGIS Online</span>
-                    <span class="skill-tag">GPS Data Collection</span>
-                    <span class="skill-tag">Spatial Data Management</span>
-                </div>
+        </div>
+        <div class="skill-category">
+            <h3>gis</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">ArcGIS</span><span class="skill-tag">ArcGIS Online</span>
+                <span class="skill-tag">GPS Data Collection</span><span class="skill-tag">Spatial Data Mgmt</span>
             </div>
-
-            <div class="skill-category">
-                <h3>Laboratory</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Specimen Collection</span>
-                    <span class="skill-tag">Microscopy</span>
-                    <span class="skill-tag">Fluorescence Microscopy</span>
-                    <span class="skill-tag">Digital Imaging</span>
-                    <span class="skill-tag">Centrifugation</span>
-                    <span class="skill-tag">Cell Culture</span>
-                </div>
+        </div>
+        <div class="skill-category">
+            <h3>laboratory</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Specimen Collection</span><span class="skill-tag">Microscopy</span>
+                <span class="skill-tag">Fluorescence Microscopy</span><span class="skill-tag">Digital Imaging</span>
+                <span class="skill-tag">Centrifugation</span><span class="skill-tag">Cell Culture</span>
             </div>
-
-            <div class="skill-category">
-                <h3>Research</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Scientific Documentation</span>
-                    <span class="skill-tag">Data Management</span>
-                    <span class="skill-tag">Research Presentations</span>
-                    <span class="skill-tag">Literature Review</span>
-                </div>
+        </div>
+        <div class="skill-category">
+            <h3>research</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Scientific Documentation</span><span class="skill-tag">Data Management</span>
+                <span class="skill-tag">Research Presentations</span><span class="skill-tag">Literature Review</span>
             </div>
         </div>
     </div>
 
-    <a href="index.html" class="back-link">&larr; Back to home</a>
+    <a href="index.html" class="back-link">&larr; back_to_home</a>
+
+</div>
 
 </body>
 </html>

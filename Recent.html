@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarah Taylor Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #0b1613; --panel: rgba(255,255,255,0.04); --panel-border: rgba(94,230,165,0.18);
+        --accent: #4ade80; --accent-soft: #7dffc0; --text: #e8f5ee; --text-muted: #8fae9c;
+        --mono: 'JetBrains Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0; color: var(--text); font-family: var(--sans); text-align: center;
+        background:
+            radial-gradient(circle at 18% 12%, rgba(74,222,128,0.10), transparent 42%),
+            radial-gradient(circle at 85% 78%, rgba(56,189,178,0.09), transparent 45%),
+            repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 42px),
+            repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 42px),
+            var(--bg);
+        min-height: 100vh;
+    }
+    a { text-decoration: none; }
+    nav {
+        position: sticky; top: 0; z-index: 10; background-color: rgba(11,22,19,0.85);
+        backdrop-filter: blur(10px); padding: 16px 20px; border-bottom: 1px solid var(--panel-border);
+        display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
+    }
+    nav a { color: var(--text-muted); font-family: var(--mono); font-size: 0.85em; font-weight: 600; padding: 7px 12px; border-radius: 6px; transition: 0.2s; letter-spacing: 0.5px; }
+    nav a:hover { color: var(--accent-soft); background-color: rgba(94,230,165,0.08); }
+    nav a.active { color: var(--bg); background-color: var(--accent); }
+
+    .page-wrap { max-width: 620px; margin: 0 auto; padding: 60px 20px 40px; }
+    .eyebrow { font-family: var(--mono); color: var(--accent); font-size: 0.85em; letter-spacing: 1px; margin-bottom: 10px; }
+    h1 { font-size: 2.3em; margin: 0 0 8px; font-weight: 700; }
+    .subtitle { color: var(--text-muted); margin: 0; }
+    .divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-soft)); border-radius: 2px; margin: 25px auto 45px; }
+
+    #feed { display: flex; flex-direction: column; gap: 28px; }
+
+    .post {
+        background-color: var(--panel); border: 1px solid var(--panel-border);
+        border-radius: 16px; overflow: hidden; text-align: left;
+    }
+    .post-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px; }
+    .avatar {
+        width: 42px; height: 42px; border-radius: 50%; object-fit: cover;
+        border: 2px solid var(--accent);
+    }
+    .post-author { font-weight: 700; font-size: 0.95em; }
+    .post-date { font-family: var(--mono); font-size: 0.75em; color: var(--text-muted); }
+    .post-image { width: 100%; display: block; max-height: 640px; object-fit: cover; }
+    .post-body { padding: 18px 20px 22px; }
+    .post-headline { font-size: 1.25em; font-weight: 700; margin: 0 0 8px; color: var(--accent-soft); }
+    .post-caption { line-height: 1.65; color: var(--text-muted); margin: 0; white-space: pre-line; }
+
+    .empty { color: var(--text-muted); font-family: var(--mono); }
+
+    .back-link { display: inline-block; margin-top: 40px; color: var(--accent); font-family: var(--mono); font-size: 0.9em; }
+    .back-link:hover { color: var(--accent-soft); }
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">home</a>
+    <a href="research.html">research_&amp;_skills</a>
+    <a href="experience.html">experience</a>
+    <a href="recent.html" class="active">recent_works</a>
+    <a href="professors.html">for_professors</a>
+</nav>
+
+<div class="page-wrap">
+
+    <p class="eyebrow">$ tail -f recent_works.log</p>
+    <h1>Recent Works</h1>
+    <p class="subtitle">What I'm working on lately: data, projects, and updates.</p>
+    <div class="divider"></div>
+
+    <div id="feed"></div>
+
+    <a href="index.html" class="back-link">&larr; back_to_home</a>
+
+</div>
+
+<script>
+    /* ============================================================
+       HOW TO ADD A NEW POST
+       1. Save your photo in this same project folder (e.g. my_photo.jpg)
+       2. Copy one block below, paste it at the top of the list,
+          and change the date, headline, image filename, and caption.
+       3. Dates must be written as YYYY-MM-DD.
+       4. No photo? Delete the image line (or leave it as "").
+       Posts sort themselves newest-first, so order doesn't matter.
+       ============================================================ */
+    const posts = [
+        {
+            date: "2026-10-16",
+            headline: "Tunneling Nanotubes (TNTs) in hPASMCs and hPAECs",
+            image: "tnt_image.png",
+            caption: "Tunneling nanotubes (TNTs) are thin, actin-based membranous channels that connect cells, allowing direct cell-to-cell communication and the transfer of cellular cargo.\n\nI'm studying TNTs in human pulmonary artery smooth muscle cells (hPASMCs) and human pulmonary artery endothelial cells (hPAECs). The fine filaments stretching between cells in this image are what make TNTs so interesting: they're a physical bridge between cells and not just chemical signals."
+        }
+    ];
+
+    function formatDate(str) {
+        const [y, m, d] = str.split("-").map(Number);
+        return new Date(y, m - 1, d).toLocaleDateString("en-US", {
+            year: "numeric", month: "long", day: "numeric"
+        });
+    }
+
+    const feed = document.getElementById("feed");
+    const sorted = [...posts].sort((a, b) => b.date.localeCompare(a.date));
+
+    if (sorted.length === 0) {
+        feed.innerHTML = '<p class="empty">// no posts yet, check back soon</p>';
+    }
+
+    sorted.forEach(post => {
+        const el = document.createElement("article");
+        el.className = "post";
+
+        const header = document.createElement("div");
+        header.className = "post-header";
+        header.innerHTML = `
+            <img class="avatar" src="sarah.jpg" alt="Sarah Taylor">
+            <div>
+                <div class="post-author">Sarah Taylor</div>
+                <div class="post-date">${formatDate(post.date)}</div>
+            </div>`;
+        el.appendChild(header);
+
+        if (post.image) {
+            const img = document.createElement("img");
+            img.className = "post-image";
+            img.src = post.image;
+            img.alt = post.headline;
+            el.appendChild(img);
+        }
+
+        const body = document.createElement("div");
+        body.className = "post-body";
+        const h = document.createElement("h2");
+        h.className = "post-headline";
+        h.textContent = post.headline;
+        const p = document.createElement("p");
+        p.className = "post-caption";
+        p.textContent = post.caption;
+        body.appendChild(h);
+        body.appendChild(p);
+        el.appendChild(body);
+
+        feed.appendChild(el);
+    });
+</script>
+
+</body>
+</html>
